@@ -35,7 +35,7 @@ xcaddy build $version \
 ---
 
 自动上传到自己服务器，并使用 telegram 通知：  
-需要项目里添加 [Repository variables](../../settings/variables/actions) , **`UPLOAD_PRIVATE`** = `true` 才会触发此作业  
+需要手动触发(Run workflow)时，**上传** 手动选择`true`才会触发此作业  
 另外还必须正确添加以下 [Repository secrets](../../settings/secrets/actions) :
   - **`UPLOAD_URL`** (上传的地址，例:`https://donamin.name/upload`)
   - **`UPLOAD_TOKEN`** (上传服务器的账号密码，例:`username:password`)

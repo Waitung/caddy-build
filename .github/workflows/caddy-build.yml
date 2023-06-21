@@ -19,6 +19,14 @@ on:
         options:
         - linux
         - windows
+      upload:
+        description: '上传到服务器'
+        required: true
+        default: 'false'
+        type: choice
+        options:
+        - true
+        - false
 
 jobs:
   caddy-build:
@@ -69,7 +77,7 @@ jobs:
         path: ~/build-caddy/bin/*
 
     - name: upload private
-      if: ${{ vars.UPLOAD_PRIVATE == 'true' }}
+      if: ${{ github.event.inputs.upload == 'true' }}
       env:
         UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
         UPLOAD_URL: ${{ secrets.UPLOAD_URL }}
