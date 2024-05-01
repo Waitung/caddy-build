@@ -34,7 +34,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: check go version
       run: |
@@ -42,7 +42,7 @@ jobs:
         echo "go_version=$go_version" >> $GITHUB_ENV
 
     - name: install go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
       with:
         go-version: '${{ env.go_version }}'
         cache: false
@@ -71,7 +71,7 @@ jobs:
         GOOS=$goos ../xcaddy build $version --output $caddy_file ${plugins[@]/#/--with github.com/}
 
     - name: upload caddy
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: caddy-${{ github.event.inputs.goos }}-amd64
         path: ~/build-caddy/bin/*
